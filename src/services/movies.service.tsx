@@ -2,7 +2,7 @@ import api from "./api";
 
 interface ApiProps {
   action: string;
-  type?: string;
+  type?: any;
   page?: number;
   region?: string;
 }
