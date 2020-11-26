@@ -138,11 +138,6 @@ export default function Home() {
                     alt="poster"
                     src={"https://image.tmdb.org/t/p/w200" + movie.poster_path}
                   />
-
-                  <div className="movie-info">
-                    <strong>Nota:</strong>
-                    <span>{movie.vote_average}</span>
-                  </div>
                 </li>
               ))
             )}
@@ -166,10 +161,6 @@ export default function Home() {
                     alt="poster"
                     src={"https://image.tmdb.org/t/p/w200" + movie.poster_path}
                   />
-                  <div className="movie-info">
-                    <strong>Nota:</strong>
-                    <span>{movie.vote_average}</span>
-                  </div>
                 </li>
               ))
             )}

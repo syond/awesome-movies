@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { apiGetRequest } from "../../services/movies.service";
 // import { Link } from "react-router-dom";
 
+import "./styles.css";
+
 interface IMovie {
   genres: [
     {
@@ -11,6 +13,7 @@ interface IMovie {
     }
   ];
   homepage: string;
+  backdrop_path: string;
   original_language: string;
   original_title: string;
   overview: string;
@@ -51,7 +54,7 @@ export default function Movie() {
   async function getMovieDetails() {
     const dataToRequest = {
       action: "movie",
-      type: 622855, // Teste. Isso aqui tem que vir do filme que o usuário clicar.
+      type: 718444, // Teste. Isso aqui tem que vir do filme que o usuário clicar.
       page: 1,
     };
 
@@ -65,55 +68,69 @@ export default function Movie() {
   }, []);
 
   return (
-    <div>
-      <div>
-        <img
-          alt="poster"
-          src={"https://image.tmdb.org/t/p/w300" + movie?.poster_path}
-        ></img>
-      </div>
+    <div id="movie-container">
+      <div id="content-wrapper">
+        <div id="backdrop-image">
+          <img
+            src={"https://image.tmdb.org/t/p/original" + movie?.backdrop_path}
+            alt="backdrop"
+          />
+        </div>
 
-      <p>
-        Title: <strong>{movie?.title}</strong> <br />
-        Vote Average: <strong>{movie?.vote_average}</strong> <br />
-        Genres:{" "}
-        <strong>{movie?.genres.map((genre) => genre.name + " | ")}</strong>
-        <br />
-        Overview: <strong>{movie?.overview}</strong> <br />
-        Spoken Languages:{" "}
-        <strong>
-          {movie?.spoken_languages.map((language) => language.name + " | ")}
-        </strong>
-        <br />
-        Popularity: <strong>{movie?.popularity}</strong> <br />
-        Status: <strong>{movie?.status}</strong> <br />
-        Release Date: <strong>{movie?.release_date}</strong> <br />
-        Original Title: <strong>{movie?.original_title}</strong> <br />
-        Tagline: <strong>{movie?.tagline}</strong> <br />
-        Production Companies:{" "}
-        <strong>
-          {movie?.production_companies.map(
-            (company) => company.name + " - " + company.origin_country + " | "
-          )}
-        </strong>
-        <br />
-        Production Countries:{" "}
-        <strong>
-          {movie?.production_countries.map((countrie) => countrie.name + " | ")}
-        </strong>{" "}
-        <br />
-        Homepage:{" "}
-        <strong>
-          {movie?.homepage ? (
-            <a target="_blank" rel="noreferrer" href={movie?.homepage}>
-              {movie?.homepage}
-            </a>
-          ) : (
-            "Not Found"
-          )}
-        </strong>
-        <br />
-      </p>
+        <div id="poster">
+          <img
+            alt="poster"
+            src={"https://image.tmdb.org/t/p/w300" + movie?.poster_path}
+          ></img>
+        </div>
+
+        <div id="movie-details">
+          <p>
+            Title: <strong>{movie?.title}</strong> <br />
+            Vote Average: <strong>{movie?.vote_average}</strong> <br />
+            Genres:{" "}
+            <strong>{movie?.genres.map((genre) => genre.name + " | ")}</strong>
+            <br />
+            Overview: <strong>{movie?.overview}</strong> <br />
+            Spoken Languages:{" "}
+            <strong>
+              {movie?.spoken_languages.map((language) => language.name + " | ")}
+            </strong>
+            <br />
+            Popularity: <strong>{movie?.popularity}</strong> <br />
+            Status: <strong>{movie?.status}</strong> <br />
+            Release Date: <strong>{movie?.release_date}</strong> <br />
+            Original Title: <strong>{movie?.original_title}</strong> <br />
+            Tagline: <strong>{movie?.tagline}</strong> <br />
+            Production Companies:{" "}
+            <strong>
+              {movie?.production_companies.map(
+                (company) =>
+                  company.name + " - " + company.origin_country + " | "
+              )}
+            </strong>
+            <br />
+            Production Countries:{" "}
+            <strong>
+              {movie?.production_countries.map(
+                (countrie) => countrie.name + " | "
+              )}
+            </strong>{" "}
+            <br />
+            Homepage:{" "}
+            <strong>
+              {movie?.homepage ? (
+                <a target="_blank" rel="noreferrer" href={movie?.homepage}>
+                  {movie?.homepage}
+                </a>
+              ) : (
+                "Not Found"
+              )}
+            </strong>
+            <br />
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
