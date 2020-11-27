@@ -3,22 +3,16 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import "./styles/global.css";
 
-import Home from "./pages/Home";
-import Movie from "./pages/Movie";
-import Search from "./pages/Search";
+import { Home } from "./pages/Home";
+import { Movie } from "./pages/Movie";
 
 function App() {
   return (
     <BrowserRouter>
       <Route exact={true} path="/" component={Home} />
-      <Route path="/movie" component={Movie} />
-      <Route path="/search" component={Search} />
+      <Route path="/movie/:id" component={Movie} />
+      {/* <Route component={Error404} /> */}
     </BrowserRouter>
-
-    // rota index
-    // rota movies
-    // rota search
-    // rota auth
   );
 }
 

@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { apiGetRequest } from "../../services/movies.service";
 import { Spinner } from "react-bootstrap";
 
 import "./styles.css";
 
 interface IMovie {
-  id?: number;
-  adult?: false;
-  original_language?: string;
+  id?: string;
+  // adult?: false;
+  // original_language?: string;
   original_title?: string;
-  title?: string;
+  // title?: string;
   poster_path?: string;
-  //genres: [],
-  overview?: string;
-  popularity?: string;
-  //   production_companies: [],
-  //   production_countries: [],
-  release_date?: Date;
-  vote_average?: number;
-  vote_count?: number;
-  revenue?: number;
+  // //genres: [],
+  // overview?: string;
+  // popularity?: string;
+  // //   production_companies: [],
+  // //   production_countries: [],
+  // release_date?: Date;
+  // vote_average?: number;
+  // vote_count?: number;
+  // revenue?: number;
 }
 
-export default function Home() {
+export const Home: React.FC = () => {
   const [upComingMovies, setUpComingMovies] = useState<IMovie[]>([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState<IMovie[]>([]);
   const [latestMovie, setLatestMovie] = useState<IMovie>();
@@ -70,16 +70,11 @@ export default function Home() {
     try {
       const response = await apiGetRequest(dataToRequest);
 
-      const nextDataToRequest = [
-        ...nowPlayingMovies,
-        ...response.data.results
-      ]
+      const nextDataToRequest = [...nowPlayingMovies, ...response.data.results];
 
-      //const fourMovies = response.data.results.slice(0, 4);
+      setNowPlayingMovies(nextDataToRequest);
 
-      setNowPlayingMovies(nextDataToRequest);      
-
-      setnextPageNumber(response.data.page + 1)
+      setnextPageNumber(response.data.page + 1);
 
       setLoadingNowPlayingMovies(false);
     } catch (error) {
@@ -109,10 +104,6 @@ export default function Home() {
     }
   }
 
-  // async function handleLoadMoreNowPlayingMovies() {
-  //   //getNowPlayingMovies()
-  // }
-
   useEffect(() => {
     getNowPlayingMovies();
     getUpComingMovies();
@@ -133,20 +124,24 @@ export default function Home() {
               <Spinner animation="border" role="status" />
             ) : (
               nowPlayingMovies.map((movie) => (
-                <li key={movie.id}>
-                  <img
-                    alt="poster"
-                    src={"https://image.tmdb.org/t/p/w200" + movie.poster_path}
-                  />
-                </li>
+                <Link
+                  key={movie.id}
+                  to={`/movie/${movie.id}`}
+                >
+                  <li key={movie.id}>
+                    <img
+                      alt="poster"
+                      src={
+                        "https://image.tmdb.org/t/p/w200" + movie.poster_path
+                      }
+                    />
+                  </li>
+                </Link>
               ))
             )}
           </ul>
 
-          <button
-            className="load-more"
-            onClick={getNowPlayingMovies}
-          >
+          <button className="load-more" onClick={getNowPlayingMovies}>
             +
           </button>
 
@@ -193,4 +188,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
