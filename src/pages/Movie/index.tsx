@@ -52,7 +52,7 @@ interface IMovie {
   vote_count: number;
 }
 
-export const Movie: React.FC = () => {
+const Movie: React.FC = () => {
   const [movie, setMovie] = useState<IMovie>();
 
   const { id } = useParams<IRouteParams>();
@@ -149,3 +149,5 @@ export const Movie: React.FC = () => {
     </div>
   );
 };
+
+export default Movie;
