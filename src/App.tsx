@@ -2,10 +2,12 @@ import React from "react";
 
 import "./styles/global.css";
 
-import Layout from "./components/Layout";
+import Home from './pages/Home'
 
 function App() {
-  return <Layout />;
+  return (
+    <Home />
+  )
 }
 
 export default App;

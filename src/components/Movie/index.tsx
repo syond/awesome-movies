@@ -59,7 +59,7 @@ const Movie: React.FC = () => {
 
   const history = useHistory();
 
-  function handleBackButton(){
+  function handleBackButton() {
     history.goBack();
   }
 
@@ -81,9 +81,7 @@ const Movie: React.FC = () => {
   return (
     <div id="movie-container">
       <div id="content-wrapper">
-        <button onClick={handleBackButton}>
-          BACK
-        </button>
+        <button onClick={handleBackButton}>BACK</button>
 
         <div id="backdrop-image">
           <img

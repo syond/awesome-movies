@@ -41,7 +41,7 @@ const LatestMovie: React.FC = () => {
   }, []);
 
   return (
-    <div id="container">
+    <div id="latestmovie-container">
       <strong>Latest Movie</strong>
       {loadingLatestMovie ? (
         <Spinner animation="border" role="status" />

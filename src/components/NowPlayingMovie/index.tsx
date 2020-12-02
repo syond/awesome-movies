@@ -60,7 +60,7 @@ const NowPlayingMovie: React.FC = () => {
   }, []);
 
   return (
-    <div id="container">
+    <div id="nowplaying-container">
       <strong>Now playing in theaters</strong>
       <ul className="movies-grid">
         {loadingNowPlayingMovies ? (
