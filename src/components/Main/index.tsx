@@ -1,17 +1,13 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 import "./styles.css";
 
-import NowPlayingMovie from "../NowPlayingMovie";
-import LatestMovie from "../LatestMovie";
+interface Props {
+  children: ReactNode;
+}
 
-const Main: React.FC = () => {
-  return (
-    <div id="content">
-      <NowPlayingMovie />
-      <LatestMovie />
-    </div>
-  );
+const Main: React.FC<Props> = ({ children }) => {
+  return <main>{children}</main>;
 };
 
 export default Main;

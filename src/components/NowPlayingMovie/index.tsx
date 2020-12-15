@@ -4,6 +4,7 @@ import { apiGetRequest } from "../../services/movies.service";
 
 import "./styles.css";
 import { Spinner } from "react-bootstrap";
+import List from "../List";
 
 interface IMovie {
   id?: string;
@@ -62,7 +63,8 @@ const NowPlayingMovie: React.FC = () => {
   return (
     <div id="nowplaying-container">
       <strong>Now playing in theaters</strong>
-      <ul className="movies-grid">
+
+      <List>
         {loadingNowPlayingMovies ? (
           <Spinner animation="border" role="status" />
         ) : (
@@ -77,7 +79,7 @@ const NowPlayingMovie: React.FC = () => {
             </Link>
           ))
         )}
-      </ul>
+      </List>
 
       <button className="load-more" onClick={getNowPlayingMovies}>
         +
