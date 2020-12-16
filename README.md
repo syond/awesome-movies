@@ -1,30 +1,63 @@
-# Movie Database App
+# :pushpin: Timetable
 
-**Tier:** 3-Advanced
+* [Demo](#eyes-demo)   
+* [About](#coffee-about) 
+* [Features](#rocket-features)  
+* [Technologies](#computer-technologies)
+* [Installation](#floppy_disk-installation)
+* [Contribute](#✨-contribute)
+* [Contact](#email-contact)
 
-Find your next movie or create your watchlist with this App. It include reviews, rating, actors and anything you need to know about the movie.
+# :eyes: Demo
+[![Netlify Status](https://api.netlify.com/api/v1/badges/860933e2-f126-4694-ae7a-8c05ef9e2512/deploy-status)](https://awesomemovies.netlify.app) 
 
--   This application will help users find their next movie to watch by showing helpful stats
--   Resource needed for the project is movie api, examples include Imdb, MovieDB etc.
+# :coffee: About
+The user can see informations about all movies from worldwide.
 
-## User Stories
+# :rocket: Features
+* User can see all the latest movie on the front page
+* User scroll down to see all other movies according to release date
+* User can then see all about the movie ratings, about, actors present on each separate movie page
 
--   [x] User can see all the latest movie on the front page
--   [x] User scroll down to see all other movies according to release date
--   [x] User can click on any of the movie to go to their own separate page
--   [x] User can then see all about the movie ratings, about, actors present on each separate movie page
+## Coming soon features
+* User can create an account
+* User can create their own watch list
+* User can review movies
 
-## Bonus features
+# :computer: Technologies
+* ReactJS
+* TheMovieDb API
 
--   [ ] User can create an account
--   [ ] User can create their own watch list
--   [ ] User can review movies
+## What we have here ?
+* react-bootstrap
+* axios
+* useState
+* useEffect
+* react-router-dom
+* more...
 
-## Useful links and resources
 
--   [MovieDB Api](https://developers.themoviedb.org/3)
+# :floppy_disk: Installation
+Before you start, you need to clone the repository using `git clone`.
 
-## Example projects
+## Using Docker
 
-[Movie Database App w/ React by Oliver Gomes](http://phobic-heat.surge.sh/)  
-[Movie Browser App w/ React&Redux&Bootstrap by Nataliia Pylypenko](https://api-cinema-10d15.firebaseapp.com/)
+### For development
+
+`docker-compose up -d`
+
+## Using NPM or YARN
+
+1. `npm install` or `yarn install` for install dependencies.
+
+2. `npm start`
+
+Now you are ready to go! :)
+
+# ✨ Contribute
+Feel free to send a PR :)
+
+# :email: Contact
+syond94@gmail.com | 
+[Linkedin](https://linkedin.com/in/syond)
+
