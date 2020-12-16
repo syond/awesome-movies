@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { apiGetRequest } from "../../services/movies.service";
 
 import { Spinner } from "react-bootstrap";
 import List from "../List";
 
-//importar a mesma interface do Now Playing Movies aqui depois
 interface IMovie {
   id?: string;
   original_title?: string;
@@ -20,8 +19,6 @@ const UpcomingMovie: React.FC = () => {
     isloadingUpcomingMovies,
     setisLoadingUpcomingMovies,
   ] = useState<Boolean>(false);
-
-  const history = useHistory();
 
   async function getUpComingMovies() {
     setisLoadingUpcomingMovies(true);

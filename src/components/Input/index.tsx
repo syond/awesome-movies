@@ -6,7 +6,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement>{
   label?: string;
   name: string;
   placeholder: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const Input: React.FC<Props> = ({ label, name, placeholder, children, ...rest }) => {

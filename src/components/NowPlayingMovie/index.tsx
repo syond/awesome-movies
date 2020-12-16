@@ -9,19 +9,8 @@ import List from "../List";
 interface IMovie {
   id?: string;
   adult: false;
-  // original_language?: string;
   original_title?: string;
-  // title?: string;
   poster_path?: string;
-  // //genres: [],
-  // overview?: string;
-  // popularity?: string;
-  // //   production_companies: [],
-  // //   production_countries: [],
-  // release_date?: Date;
-  // vote_average?: number;
-  // vote_count?: number;
-  // revenue?: number;
 }
 
 const NowPlayingMovie: React.FC = () => {
