@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
 
 import { apiGetRequest } from "../../services/movies.service";
-// import { Link } from "react-router-dom";
 
 import "./styles.css";
+
+interface IRouteParams {
+  id: string;
+}
 
 interface IMovie {
   genres: [
@@ -48,14 +52,21 @@ interface IMovie {
   vote_count: number;
 }
 
-export default function Movie() {
+const Movie: React.FC = () => {
   const [movie, setMovie] = useState<IMovie>();
+
+  const { id } = useParams<IRouteParams>();
+
+  const history = useHistory();
+
+  function handleBackButton() {
+    history.goBack();
+  }
 
   async function getMovieDetails() {
     const dataToRequest = {
       action: "movie",
-      type: 718444, // Teste. Isso aqui tem que vir do filme que o usuário clicar.
-      page: 1,
+      id: id,
     };
 
     const response = await apiGetRequest(dataToRequest);
@@ -70,6 +81,8 @@ export default function Movie() {
   return (
     <div id="movie-container">
       <div id="content-wrapper">
+        <button onClick={handleBackButton}>BACK</button>
+
         <div id="backdrop-image">
           <img
             src={"https://image.tmdb.org/t/p/original" + movie?.backdrop_path}
@@ -133,4 +146,6 @@ export default function Movie() {
       </div>
     </div>
   );
-}
+};
+
+export default Movie;
