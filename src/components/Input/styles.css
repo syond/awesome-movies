@@ -1,0 +1,32 @@
+#search-container {
+  display: flex;
+  align-items: center;
+
+  margin-top: 50px;
+}
+
+#search-container input {
+  width: 600px;
+  height: 60px;
+
+  font-size: 1.5rem;
+}
+
+#search-container button {
+  height: 60px;
+  width: 150px;
+  border-radius: 5px;
+  border-style: none;
+  outline: 0;
+
+  margin-left: 5px;
+
+  transition: 0.5s;
+
+  cursor: pointer;
+}
+
+#search-container button:hover {
+  opacity: 1;
+  background-color: aquamarine;
+}
