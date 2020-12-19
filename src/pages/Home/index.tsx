@@ -1,28 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { IMovie } from "../../interfaces";
 import { apiGetRequest } from "../../services/movies.service";
 
 import { Spinner } from "react-bootstrap";
+import notFoundImg from "../../assets/images/error-404.jpg";
 
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
+import Main from "../../components/Main";
 import Input from "../../components/Input";
 import List from "../../components/List";
-import Main from "../../components/Main";
-import NowPlayingMovie from "../../components/NowPlayingMovie";
-import LatestMovie from "../../components/LatestMovie";
+import Button from "../../components/Button";
 
-interface IMovie {
-  id?: string;
-  original_title?: string;
-  poster_path?: string;
-  total_pages?: number;
-  total_results?: number;
-}
-
-const Home: React.FC = () => {
+const Home = () => {
+  const [nowPlayingMovies, setNowPlayingMovies] = useState<IMovie[]>([]);
+  const [nextPageNumber, setnextPageNumber] = useState<number>(1);
+  const [
+    loadingNowPlayingMovies,
+    setLoadingNowPlayingMovies,
+  ] = useState<Boolean>(false);
   const [searchedMovie, setSearchedMovie] = useState<IMovie[]>([]);
   const [otherInfos, setotherInfos] = useState<IMovie>();
   const [
@@ -54,6 +53,34 @@ const Home: React.FC = () => {
     }
   }
 
+  async function getNowPlayingMovies() {
+    setLoadingNowPlayingMovies(true);
+
+    const dataToRequest = {
+      action: "movie",
+      type: "now_playing",
+      page: nextPageNumber,
+    };
+
+    try {
+      const response = await apiGetRequest(dataToRequest);
+
+      const nextDataToRequest = [...nowPlayingMovies, ...response.data.results];
+
+      setNowPlayingMovies(nextDataToRequest);
+
+      setnextPageNumber(response.data.page + 1);
+
+      setLoadingNowPlayingMovies(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getNowPlayingMovies();
+  }, []);
+
   return (
     <Layout>
       <Header />
@@ -76,27 +103,48 @@ const Home: React.FC = () => {
           <Spinner animation="border" role="status" />
         ) : (
           <>
-            <List>
+            <List title="Now playing in theaters">
               {searchedMovie.length !== 0 ? (
                 searchedMovie.map((result) => (
                   <Link to={`/movie/${result.id}`}>
                     <li key={result.id}>
                       <img
                         alt="poster"
+                        src={`
+                          ${
+                            result.poster_path
+                              ? "https://image.tmdb.org/t/p/w200" +
+                                result.poster_path
+                              : notFoundImg
+                          }
+                          `}
+                      />
+                    </li>
+                  </Link>
+                ))
+              ) : loadingNowPlayingMovies ? (
+                <Spinner animation="border" role="status" />
+              ) : (
+                nowPlayingMovies.map((movie) => (
+                  <Link key={movie.id} to={`/movie/${movie.id}`}>
+                    <li key={movie.id}>
+                      <img
+                        alt="poster"
                         src={
-                          "https://image.tmdb.org/t/p/w200" + result.poster_path
+                          "https://image.tmdb.org/t/p/w200" + movie.poster_path
                         }
                       />
                     </li>
                   </Link>
                 ))
-              ) : (
-                <>
-                  <NowPlayingMovie />
-                  <LatestMovie />
-                </>
               )}
             </List>
+            <Button
+              type="button"
+              name="+"
+              className="load-more"
+              onClick={getNowPlayingMovies}
+            />
             Total pages: {otherInfos?.total_pages}
             Total results: {otherInfos?.total_results}
           </>
