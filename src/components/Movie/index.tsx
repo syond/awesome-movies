@@ -24,24 +24,23 @@ const Movie: React.FC<IMovieComponentProps> = ({
 }) => {
   return (
     <div id="movie-container">
-      <div id="content-wrapper">
         {children}
 
-        <div id="backdrop-image">
+        <div className="backdrop-image">
           <img
             src={"https://image.tmdb.org/t/p/original" + backdropPath}
             alt="backdrop"
           />
         </div>
 
-        <div id="poster">
+        <div className="poster">
           <img
             alt="poster"
             src={"https://image.tmdb.org/t/p/w300" + posterPath}
           ></img>
         </div>
 
-        <div id="movie-details">
+        <div className="movie-details">
           <p>
             Title: <strong>{title}</strong> <br />
             Vote Average: <strong>{voteAverage}</strong> <br />
@@ -109,7 +108,6 @@ const Movie: React.FC<IMovieComponentProps> = ({
             <br />
           </p>
         </div>
-      </div>
     </div>
   );
 };

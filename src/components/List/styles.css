@@ -1,15 +1,14 @@
-.movies-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+.movies-grid ul{
+  
+
+  text-align: center;
 }
 
 .movies-grid li {
-  display: flex;
-  flex-direction: column;
-
   list-style: none;
-  margin: 1rem;
+  margin-top: 1rem;
+
+  display: inline-block;
 }
 
 .movies-grid li img {

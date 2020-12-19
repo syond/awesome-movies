@@ -7,7 +7,6 @@ import { apiGetRequest } from "../../services/movies.service";
 
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
-import Navbar from "../../components/Navbar";
 import Main from "../../components/Main";
 import Button from "../../components/Button";
 import Movie from "../../components/Movie";
@@ -45,7 +44,6 @@ const MovieDetails = () => {
   return (
     <Layout>
       <Header />
-      <Navbar />
       <Main>
         <Button type="button" name="Back" onClick={handleBackButton} />
         <Movie

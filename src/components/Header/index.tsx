@@ -2,10 +2,19 @@ import React from "react";
 
 import "./styles.css";
 
-const Header: React.FC = () => {
+import Navbar from "../Navbar";
+
+interface Props{
+  children?: React.ReactNode;
+}
+
+const Header: React.FC<Props> = ({ children }) => {
   return (
     <header>
-      <span>Welcome to Awesome Movies</span>
+      <Navbar />
+      <h1>Welcome to Awesome Movies</h1>
+
+      {children}
     </header>
   );
 };
