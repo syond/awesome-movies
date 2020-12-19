@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { IMovie } from "../../interfaces";
@@ -53,7 +53,9 @@ const Home = () => {
     }
   }
 
-  async function getNowPlayingMovies() {
+  const getNowPlayingMovies = useRef(() => {});
+
+  getNowPlayingMovies.current = async () => {
     setLoadingNowPlayingMovies(true);
 
     const dataToRequest = {
@@ -78,7 +80,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    getNowPlayingMovies();
+    getNowPlayingMovies.current();
   }, []);
 
   return (
@@ -143,7 +145,7 @@ const Home = () => {
               type="button"
               name="+"
               className="load-more"
-              onClick={getNowPlayingMovies}
+              onClick={getNowPlayingMovies.current}
             />
             Total pages: {otherInfos?.total_pages}
             Total results: {otherInfos?.total_results}
