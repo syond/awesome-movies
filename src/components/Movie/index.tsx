@@ -1,91 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import React from "react";
 
-import { apiGetRequest } from "../../services/movies.service";
+import { IMovieComponentProps } from '../../interfaces';
 
 import "./styles.css";
 
-interface IRouteParams {
-  id: string;
-}
-
-interface IMovie {
-  genres: [
-    {
-      id: number;
-      name: string;
-    }
-  ];
-  homepage: string;
-  backdrop_path: string;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: string;
-  poster_path: string;
-  production_companies: [
-    {
-      id: number;
-      logo_path: string;
-      name: string;
-      origin_country: string;
-    }
-  ];
-  production_countries: [
-    {
-      iso_3166_1: string;
-      name: string;
-    }
-  ];
-  release_date: string;
-  spoken_languages: [
-    {
-      english_name: string;
-      iso_639_1: string;
-      name: string;
-    }
-  ];
-  status: string;
-  tagline: string;
-  title: string;
-  vote_average: number;
-  vote_count: number;
-}
-
-const Movie: React.FC = () => {
-  const [movie, setMovie] = useState<IMovie>();
-
-  const { id } = useParams<IRouteParams>();
-
-  const history = useHistory();
-
-  function handleBackButton() {
-    history.goBack();
-  }
-
-  async function getMovieDetails() {
-    const dataToRequest = {
-      action: "movie",
-      id: id,
-    };
-
-    const response = await apiGetRequest(dataToRequest);
-
-    setMovie(response.data);
-  }
-
-  useEffect(() => {
-    getMovieDetails();
-  }, []);
-
+const Movie: React.FC<IMovieComponentProps> = ({
+  backdropPath,
+  posterPath,
+  title,
+  voteAverage,
+  genres,
+  overview,
+  spokenLanguages,
+  popularity,
+  status,
+  releaseDate,
+  originalTitle,
+  tagline,
+  productionCompanies,
+  productionCountries,
+  homepage,
+  children,
+}) => {
   return (
     <div id="movie-container">
       <div id="content-wrapper">
-        <button onClick={handleBackButton}>BACK</button>
+        {children}
 
         <div id="backdrop-image">
           <img
-            src={"https://image.tmdb.org/t/p/original" + movie?.backdrop_path}
+            src={"https://image.tmdb.org/t/p/original" + backdropPath}
             alt="backdrop"
           />
         </div>
@@ -93,48 +37,70 @@ const Movie: React.FC = () => {
         <div id="poster">
           <img
             alt="poster"
-            src={"https://image.tmdb.org/t/p/w300" + movie?.poster_path}
+            src={"https://image.tmdb.org/t/p/w300" + posterPath}
           ></img>
         </div>
 
         <div id="movie-details">
           <p>
-            Title: <strong>{movie?.title}</strong> <br />
-            Vote Average: <strong>{movie?.vote_average}</strong> <br />
-            Genres:{" "}
-            <strong>{movie?.genres.map((genre) => genre.name + " | ")}</strong>
+            Title: <strong>{title}</strong> <br />
+            Vote Average: <strong>{voteAverage}</strong> <br />
+          
+
+            {/* Erro: Tá dando undefined */}
+            {/* Genres: <strong>{genres.map((genre) => genre.name + " | ")}</strong> */}
             <br />
-            Overview: <strong>{movie?.overview}</strong> <br />
+
+
+
+            Overview: <strong>{overview}</strong> <br />
+
+
             Spoken Languages:{" "}
             <strong>
-              {movie?.spoken_languages.map((language) => language.name + " | ")}
+
+              {/* Erro: Tá dando undefined */}
+              {/* {spokenLanguages.map((language) => language.name + " | ")} */}
             </strong>
+
+
+
             <br />
-            Popularity: <strong>{movie?.popularity}</strong> <br />
-            Status: <strong>{movie?.status}</strong> <br />
-            Release Date: <strong>{movie?.release_date}</strong> <br />
-            Original Title: <strong>{movie?.original_title}</strong> <br />
-            Tagline: <strong>{movie?.tagline}</strong> <br />
+            Popularity: <strong>{popularity}</strong> <br />
+            Status: <strong>{status}</strong> <br />
+            Release Date: <strong>{releaseDate}</strong> <br />
+            Original Title: <strong>{originalTitle}</strong> <br />
+            Tagline: <strong>{tagline}</strong> <br />
+
+
             Production Companies:{" "}
             <strong>
-              {movie?.production_companies.map(
+              {/* Erro: Tá dando undefined */}
+              {/* {productionCompanies.map(
                 (company) =>
                   company.name + " - " + company.origin_country + " | "
-              )}
+              )} */}
             </strong>
+
+
+
             <br />
+
+            
             Production Countries:{" "}
             <strong>
-              {movie?.production_countries.map(
-                (countrie) => countrie.name + " | "
-              )}
+              {/* Erro: Tá dando undefined */}
+              {/* {productionCountries.map((countrie) => countrie.name + " | ")} */}
             </strong>{" "}
+
+
+
             <br />
             Homepage:{" "}
             <strong>
-              {movie?.homepage ? (
-                <a target="_blank" rel="noreferrer" href={movie?.homepage}>
-                  {movie?.homepage}
+              {homepage ? (
+                <a target="_blank" rel="noreferrer" href={homepage}>
+                  {homepage}
                 </a>
               ) : (
                 "Not Found"
