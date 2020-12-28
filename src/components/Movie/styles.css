@@ -1,7 +1,11 @@
+#movie-container {
+  color: var(--quaternary);
+}
+
 #movie-container .backdrop-image img {
   width: 100%;
 }
 
 #movie-container .poster img {
-  width: 50%;
+  width: 20%;
 }

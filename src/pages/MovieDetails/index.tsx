@@ -43,7 +43,7 @@ const MovieDetails = () => {
 
   return (
     <Layout>
-      <Header />
+      <Header title="Movie details" />
       <Main>
         <Button type="button" name="Back" onClick={handleBackButton} />
         <Movie

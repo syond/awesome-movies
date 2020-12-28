@@ -1,11 +1,24 @@
 nav {
-  display: inline-flex;
-  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  width: 100% !important;
+
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  
-  padding-bottom: 15px;
+
+  background-color: black;
+
+  padding: 15px 30px;
 }
 
-nav a{
-    padding: 10px;
+nav button {
+  height: 50px;
+  width: 100px;
+}
+
+nav .menu-icon:hover {
+  cursor: pointer;
 }

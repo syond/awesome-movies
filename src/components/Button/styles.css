@@ -5,6 +5,10 @@ button {
   border-style: none;
   outline: 0;
 
+  color: #eeeeee;
+
+  background-color: #00adb5;
+
   transition: 0.5s;
 
   margin: 0 0 10px 0;

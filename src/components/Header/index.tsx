@@ -2,17 +2,15 @@ import React from "react";
 
 import "./styles.css";
 
-import Navbar from "../Navbar";
-
-interface Props{
+interface Props {
   children?: React.ReactNode;
+  title: string;
 }
 
-const Header: React.FC<Props> = ({ children }) => {
+const Header: React.FC<Props> = ({ children, title }) => {
   return (
     <header>
-      <Navbar />
-      <h1>Welcome to Awesome Movies</h1>
+      <h1>{title}</h1>
 
       {children}
     </header>

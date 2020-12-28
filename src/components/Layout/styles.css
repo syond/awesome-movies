@@ -1,3 +1,28 @@
+/* main site structure */
+
+/* #container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  height: 100vh;
+} */
+
+#container{
+  max-width: 1200px;
+  overflow-x: hidden;
+}
+
+/* mobile version */
+@media screen and (min-width: 620px){}
+/* tablet version */
+@media screen and (min-width: 960px){}
+/* desktop version */
+@media screen and (min-width: 1200px){}
+
+
+
+/* tests */
 section {
   height: 100vh;
   width: 430px;
@@ -5,12 +30,6 @@ section {
 
   overflow-y: scroll;
   overflow-x: hidden;
-}
-
-#container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  height: 100vh;
+  
+  
 }

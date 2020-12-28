@@ -84,7 +84,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <Header>
+      <Header title="Welcome to Awesome Movies">
         <Input
           name="search"
           placeholder="Search for any movie"

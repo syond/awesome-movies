@@ -1,17 +1,22 @@
 #search-container {
   display: flex;
   align-items: center;
+
+  padding-top: 30px;
 }
 
 #search-container input {
-  height: 60px;
+  padding: 22px 20px;
+  width: 100%;
 
-  padding: 10px;
+  background-color: var(--primary);
 
-  font-size: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  outline: 0;
+
+  font-size: 1.2rem;
 }
-
-
 
 /*
   Daqui pra baixo não está sendo utilizado
