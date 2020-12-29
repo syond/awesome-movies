@@ -1,0 +1,23 @@
+#results-info {
+    display: flex;
+    align-items: center;
+    
+    justify-content: flex-end;
+
+    font-size: 1rem;
+    font-weight: 400;
+
+    width: 100%;
+}
+
+#results-info .total-pages{
+    padding-right: 1.5rem;
+}
+
+#results-info .total-pages strong{
+    padding-right: 0.5rem;
+}
+
+#results-info .total-results strong{
+    padding-right: 0.5rem;
+}

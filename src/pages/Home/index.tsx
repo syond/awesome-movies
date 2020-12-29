@@ -6,6 +6,7 @@ import { apiGetRequest } from "../../services/movies.service";
 
 import { Spinner } from "react-bootstrap";
 import notFoundImg from "../../assets/images/error-404.jpg";
+import "./styles.css";
 
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
@@ -52,7 +53,7 @@ const Home = () => {
     }
   }
 
-  const getNowPlayingMovies = useRef(() => {});
+  const getNowPlayingMovies = useRef(() => { });
 
   getNowPlayingMovies.current = async () => {
     setLoadingNowPlayingMovies(true);
@@ -100,56 +101,64 @@ const Home = () => {
       </Header>
 
       <Main>
+        <div id="results-info">
+          <span className="total-pages">
+            <strong>Total pages:</strong> 
+            <span>{otherInfos?.total_pages}</span>
+          </span>
+          <span className="total-results">
+            <strong>Total results:</strong> 
+            <span>{otherInfos?.total_results}</span>
+          </span>
+        </div>
         {isLoadingSearchedMovie ? (
           <Spinner animation="border" role="status" />
         ) : (
-          <>
-            <List title="Now playing in theaters">
-              {searchedMovie.length !== 0 ? (
-                searchedMovie.map((result) => (
-                  <Link to={`/movie/${result.id}`}>
-                    <li key={result.id}>
-                      <img
-                        alt="poster"
-                        src={`
-                          ${
-                            result.poster_path
+            <>
+              <List title="Now playing in theaters">
+                {searchedMovie.length !== 0 ? (
+                  searchedMovie.map((result) => (
+                    <Link to={`/movie/${result.id}`}>
+                      <li key={result.id}>
+                        <img
+                          alt="poster"
+                          src={`
+                          ${result.poster_path
                               ? "https://image.tmdb.org/t/p/w200" +
-                                result.poster_path
+                              result.poster_path
                               : notFoundImg
-                          }
+                            }
                           `}
-                      />
-                    </li>
-                  </Link>
-                ))
-              ) : loadingNowPlayingMovies ? (
-                <Spinner animation="border" role="status" />
-              ) : (
-                nowPlayingMovies.map((movie) => (
-                  <Link key={movie.id} to={`/movie/${movie.id}`}>
-                    <li key={movie.id}>
-                      <img
-                        alt="poster"
-                        src={
-                          "https://image.tmdb.org/t/p/w200" + movie.poster_path
-                        }
-                      />
-                    </li>
-                  </Link>
-                ))
-              )}
-            </List>
-            <Button
-              type="button"
-              name="+"
-              className="load-more"
-              onClick={getNowPlayingMovies.current}
-            />
-            Total pages: {otherInfos?.total_pages}
-            Total results: {otherInfos?.total_results}
-          </>
-        )}
+                        />
+                      </li>
+                    </Link>
+                  ))
+                ) : loadingNowPlayingMovies ? (
+                  <Spinner animation="border" role="status" />
+                ) : (
+                      nowPlayingMovies.map((movie) => (
+                        <Link key={movie.id} to={`/movie/${movie.id}`}>
+                          <li key={movie.id}>
+                            <img
+                              alt="poster"
+                              src={
+                                "https://image.tmdb.org/t/p/w200" + movie.poster_path
+                              }
+                            />
+                          </li>
+                        </Link>
+                      ))
+                    )}
+              </List>
+              <Button
+                type="button"
+                name="+"
+                className="load-more"
+                onClick={getNowPlayingMovies.current}
+              />
+
+            </>
+          )}
       </Main>
     </Layout>
   );
