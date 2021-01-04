@@ -2,10 +2,17 @@ import React from "react";
 
 import "./styles.css";
 
-const Header: React.FC = () => {
+interface Props {
+  children?: React.ReactNode;
+  title: string;
+}
+
+const Header: React.FC<Props> = ({ children, title }) => {
   return (
     <header>
-      <span>Welcome to Awesome Movies</span>
+      <h1>{title}</h1>
+
+      {children}
     </header>
   );
 };

@@ -1,149 +1,107 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import React from "react";
 
-import { apiGetRequest } from "../../services/movies.service";
+import { IMovieComponentProps } from '../../interfaces';
 
 import "./styles.css";
 
-interface IRouteParams {
-  id: string;
-}
-
-interface IMovie {
-  genres: [
-    {
-      id: number;
-      name: string;
-    }
-  ];
-  homepage: string;
-  backdrop_path: string;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: string;
-  poster_path: string;
-  production_companies: [
-    {
-      id: number;
-      logo_path: string;
-      name: string;
-      origin_country: string;
-    }
-  ];
-  production_countries: [
-    {
-      iso_3166_1: string;
-      name: string;
-    }
-  ];
-  release_date: string;
-  spoken_languages: [
-    {
-      english_name: string;
-      iso_639_1: string;
-      name: string;
-    }
-  ];
-  status: string;
-  tagline: string;
-  title: string;
-  vote_average: number;
-  vote_count: number;
-}
-
-const Movie: React.FC = () => {
-  const [movie, setMovie] = useState<IMovie>();
-
-  const { id } = useParams<IRouteParams>();
-
-  const history = useHistory();
-
-  function handleBackButton() {
-    history.goBack();
-  }
-
-  async function getMovieDetails() {
-    const dataToRequest = {
-      action: "movie",
-      id: id,
-    };
-
-    const response = await apiGetRequest(dataToRequest);
-
-    setMovie(response.data);
-  }
-
-  useEffect(() => {
-    getMovieDetails();
-  }, []);
-
+const Movie: React.FC<IMovieComponentProps> = ({
+  backdropPath,
+  posterPath,
+  title,
+  voteAverage,
+  genres,
+  overview,
+  spokenLanguages,
+  popularity,
+  status,
+  releaseDate,
+  originalTitle,
+  tagline,
+  productionCompanies,
+  productionCountries,
+  homepage,
+  children,
+}) => {
   return (
     <div id="movie-container">
-      <div id="content-wrapper">
-        <button onClick={handleBackButton}>BACK</button>
+      {children}
 
-        <div id="backdrop-image">
+      <div className="backdrop-image">
+        {backdropPath ? (
           <img
-            src={"https://image.tmdb.org/t/p/original" + movie?.backdrop_path}
-            alt="backdrop"
+          src={"https://image.tmdb.org/t/p/original" + backdropPath}
+          alt="backdrop"
+        />
+        ) : ("")}        
+      </div>
+
+      <div className="info-container">
+        <div className="poster">
+          <img
+            alt="poster"
+            src={"https://image.tmdb.org/t/p/w300" + posterPath}
           />
         </div>
 
-        <div id="poster">
-          <img
-            alt="poster"
-            src={"https://image.tmdb.org/t/p/w300" + movie?.poster_path}
-          ></img>
-        </div>
+        <div className="movie-details">    
 
-        <div id="movie-details">
-          <p>
-            Title: <strong>{movie?.title}</strong> <br />
-            Vote Average: <strong>{movie?.vote_average}</strong> <br />
-            Genres:{" "}
-            <strong>{movie?.genres.map((genre) => genre.name + " | ")}</strong>
-            <br />
-            Overview: <strong>{movie?.overview}</strong> <br />
-            Spoken Languages:{" "}
-            <strong>
-              {movie?.spoken_languages.map((language) => language.name + " | ")}
-            </strong>
-            <br />
-            Popularity: <strong>{movie?.popularity}</strong> <br />
-            Status: <strong>{movie?.status}</strong> <br />
-            Release Date: <strong>{movie?.release_date}</strong> <br />
-            Original Title: <strong>{movie?.original_title}</strong> <br />
-            Tagline: <strong>{movie?.tagline}</strong> <br />
-            Production Companies:{" "}
-            <strong>
-              {movie?.production_companies.map(
+          <div className="movie-title">
+            <h1>{title}</h1>
+            {tagline ? (<span>{tagline}</span>) : ("")}            
+          </div>
+          
+
+          <div className="movie-info">            
+            <span>{releaseDate}</span>
+            <span className="maturity-number">13 anos</span>
+            <span>2h 18min</span>
+            <span>Ficção científica; Ação</span>
+          </div>
+
+          <div className="movie-synopsis">
+            <span>{overview}</span>
+          </div>
+        
+
+          <strong>Vote Average:</strong>
+          <span>{voteAverage}</span>
+          <strong>Genres:</strong>
+          {/* Erro: Tá dando undefined */}
+          {/* <span> {genres.map((genre) => genre.name)}</span> */}
+          <strong>Spoken Languages:{" "}</strong>
+          {/* Erro: Tá dando undefined */}
+          <span>{/* {spokenLanguages.map((language) => language.name + " | ")} */}</span><br />
+          <strong>Popularity:</strong>
+          <span>{popularity}</span>
+          <strong>Status:</strong>
+          <span>{status}</span>
+          <strong>Original Title:</strong>
+          <span>{originalTitle}</span>          
+          <strong>Production Companies:</strong>
+          {/* Erro: Tá dando undefined */}
+          <span>
+            {/* {productionCompanies.map(
                 (company) =>
                   company.name + " - " + company.origin_country + " | "
-              )}
-            </strong>
-            <br />
-            Production Countries:{" "}
-            <strong>
-              {movie?.production_countries.map(
-                (countrie) => countrie.name + " | "
-              )}
-            </strong>{" "}
-            <br />
-            Homepage:{" "}
-            <strong>
-              {movie?.homepage ? (
-                <a target="_blank" rel="noreferrer" href={movie?.homepage}>
-                  {movie?.homepage}
-                </a>
-              ) : (
+              )} */}
+          </span>
+          <strong>Production Countries:</strong>
+          {/* Erro: Tá dando undefined */}
+          <span>{/* {productionCountries.map((countrie) => countrie.name + " | ")} */}</span>
+          <strong>Homepage:</strong>
+          <span>
+            {homepage ? (
+              <a target="_blank" rel="noreferrer" href={homepage}>
+                {homepage}
+              </a>
+            ) : (
                 "Not Found"
               )}
-            </strong>
-            <br />
-          </p>
+          </span>
+
+
         </div>
-      </div>
+      </div>    
     </div>
   );
 };

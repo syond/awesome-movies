@@ -1,13 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 import "./styles.css";
 
+import Menu from "../Menu";
+import Button from "../Button";
+
+import { FiMenu } from "react-icons/fi";
+
 const Navbar: React.FC = () => {
+  const [showMenu, setshowMenu] = useState(false);
+
   return (
     <nav>
-      <Link to={"/"}>Now playing Movies</Link>
-      <Link to={"/upcoming"}>Upcoming Movies</Link>
+      <span className="menu-icon">
+        <FiMenu size={30} onClick={() => setshowMenu(!showMenu)} />
+      </span>
+      {showMenu ? <Menu /> : ""}
+
+      <span>
+        <Button name="Login" />
+      </span>
     </nav>
   );
 };

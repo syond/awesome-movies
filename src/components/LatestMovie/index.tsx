@@ -1,3 +1,12 @@
+/**
+ * 
+ * Tem que ver se vai precisar disso aqui ainda.
+ * Não está sendo utizado em nenhum lugar.
+ * 
+ */
+
+
+
 import React, { useState, useEffect } from "react";
 
 import { apiGetRequest } from "../../services/movies.service";
