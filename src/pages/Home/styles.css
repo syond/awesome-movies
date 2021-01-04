@@ -11,13 +11,26 @@
 }
 
 #results-info .total-pages{
-    padding-right: 1.5rem;
-}
-
-#results-info .total-pages strong{
-    padding-right: 0.5rem;
+    display: none;
 }
 
 #results-info .total-results strong{
-    padding-right: 0.5rem;
+    display: none;
 }
+
+/* tablet version */
+@media screen and (min-width: 960px) {
+    #results-info .total-pages{
+        display: inline;
+        padding-right: 1.5rem;
+    }
+    
+    #results-info .total-pages strong{
+        padding-right: 0.5rem;
+    }
+    
+    #results-info .total-results strong{
+        display: inline;
+        padding-right: 0.5rem;
+    }
+  }

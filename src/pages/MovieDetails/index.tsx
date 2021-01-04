@@ -5,6 +5,8 @@ import { IMovieDetails } from "../../interfaces";
 
 import { apiGetRequest } from "../../services/movies.service";
 
+import "./styles.css";
+
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
@@ -43,9 +45,11 @@ const MovieDetails = () => {
 
   return (
     <Layout>
-      <Header title="Movie details" />
+      <Header title="More details" />
       <Main>
-        <Button type="button" name="Back" onClick={handleBackButton} />
+        <div id="top-main">
+          <Button type="button" name="Back" onClick={handleBackButton} />
+        </div>
         <Movie
           backdropPath={movie?.backdrop_path!}
           posterPath={movie?.poster_path!}
