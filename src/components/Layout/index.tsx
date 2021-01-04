@@ -2,15 +2,22 @@ import React, { ReactNode } from "react";
 
 import "./styles.css";
 
+import Navbar from "../Navbar";
+
 interface Props {
   children: ReactNode;
 }
 
 const Layout: React.FC<Props> = ({ children }) => {  
   return (
-    <div id="container">
-      { children }
-    </div>
+    <>
+    {/* // <section> */}
+    <Navbar />
+      <div id="container">
+        { children }
+      </div>
+    {/* // </section> */}
+    </>
   );
 };
 

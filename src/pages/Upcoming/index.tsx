@@ -11,7 +11,6 @@ import notFoundImg from "../../assets/images/error-404.jpg";
 
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
-import Navbar from "../../components/Navbar";
 import Main from "../../components/Main";
 import Input from "../../components/Input";
 import List from "../../components/List";
@@ -55,9 +54,10 @@ const Upcoming = () => {
 
   return (
     <Layout>
-      <Header />
-      <Navbar />
-      <Input name="search" placeholder="Search for any movie" />
+      <Header title="Welcome to Awesome Movies">
+        <Input name="search" placeholder="Search for any movie" />
+      </Header>
+
       <Main>
         <List title="Upcoming">
           {isloadingUpcomingMovies ? (

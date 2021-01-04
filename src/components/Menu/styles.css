@@ -1,0 +1,17 @@
+#menu-container {
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0px;
+
+  padding: 30px;
+
+  background: black;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#menu-container a {
+}

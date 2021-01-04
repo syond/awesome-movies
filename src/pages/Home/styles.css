@@ -1,0 +1,36 @@
+#results-info {
+    display: flex;
+    align-items: center;
+    
+    justify-content: flex-end;
+
+    font-size: 1rem;
+    font-weight: 400;
+
+    width: 100%;
+}
+
+#results-info .total-pages{
+    display: none;
+}
+
+#results-info .total-results strong{
+    display: none;
+}
+
+/* tablet version */
+@media screen and (min-width: 960px) {
+    #results-info .total-pages{
+        display: inline;
+        padding-right: 1.5rem;
+    }
+    
+    #results-info .total-pages strong{
+        padding-right: 0.5rem;
+    }
+    
+    #results-info .total-results strong{
+        display: inline;
+        padding-right: 0.5rem;
+    }
+  }

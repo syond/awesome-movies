@@ -9,10 +9,12 @@ interface Props {
 
 const List: React.FC<Props> = ({ children, title }) => {
   return (
-    <div id="list-container">
-      <strong>{title}</strong>
-      <ul className="movies-grid">{children}</ul>
-    </div>
+    <>
+      <h4>{title}</h4>
+      <div id="list-container">
+        <ul className="movies-grid">{children}</ul>
+      </div>
+    </>
   );
 };
 
