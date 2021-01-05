@@ -101,7 +101,7 @@ const Home = () => {
       </Header>
 
       <Main>
-        {/* <div id="results-info">
+        <div id="results-info">
           <span className="total-pages">
             <strong>Total pages:</strong> 
             <span>{otherInfos?.total_pages}</span>
@@ -110,7 +110,7 @@ const Home = () => {
             <strong>Total results:</strong> 
             <span>{otherInfos?.total_results}</span>
           </span>
-        </div> */}
+        </div>
         {isLoadingSearchedMovie ? (
           <Spinner animation="border" role="status" />
         ) : (

@@ -23,6 +23,8 @@
 
 #list-container .movies-grid li img:hover {
   opacity: 1;
+
+  transform: scale(1.08);
 }
 
 .load-more {

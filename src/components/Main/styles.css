@@ -1,11 +1,4 @@
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     background-color: #222831;
