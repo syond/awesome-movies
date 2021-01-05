@@ -1,16 +1,7 @@
-/* main site structure */
-
-/* #container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  height: 100vh;
-} */
-
 #container{
   max-width: 1200px;
-  overflow-x: hidden;
+
+  margin: 0 auto;
 }
 
 /* mobile version */
@@ -19,17 +10,3 @@
 @media screen and (min-width: 960px){}
 /* desktop version */
 @media screen and (min-width: 1200px){}
-
-
-
-/* tests */
-section {
-  height: 100vh;
-  width: 430px;
-  border: 1px solid #ccc;
-
-  overflow-y: scroll;
-  overflow-x: hidden;
-  
-  
-}

@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import { IMovieDetails } from "../../interfaces";
 
 import { apiGetRequest } from "../../services/movies.service";
-
-import "./styles.css";
 
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
@@ -28,7 +26,9 @@ const MovieDetails = () => {
     history.goBack();
   }
 
-  async function getMovieDetails() {
+  const getMovieDetails = useRef(() => {});
+
+  getMovieDetails.current = async () => {
     const dataToRequest = {
       action: "movie",
       id: id,
@@ -37,10 +37,10 @@ const MovieDetails = () => {
     const response = await apiGetRequest(dataToRequest);
 
     setMovie(response.data);
-  }
+  } 
 
   useEffect(() => {
-    getMovieDetails();
+    getMovieDetails.current();
   }, []);
 
   return (
