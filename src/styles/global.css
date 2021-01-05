@@ -7,12 +7,6 @@
   --quinary: #828282;
 }
 
-#root{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 /* body default */
 body {
   box-sizing: border-box;

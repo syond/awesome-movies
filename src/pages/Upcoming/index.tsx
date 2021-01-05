@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -24,7 +24,9 @@ const Upcoming = () => {
     setisLoadingUpcomingMovies,
   ] = useState<Boolean>(false);
 
-  async function getUpComingMovies() {
+  const getUpComingMovies = useRef(() => {});
+
+  getUpComingMovies.current = async () => {
     setisLoadingUpcomingMovies(true);
 
     const dataToRequest = {
@@ -49,7 +51,7 @@ const Upcoming = () => {
   }
 
   useEffect(() => {
-    getUpComingMovies();
+    getUpComingMovies.current();
   }, []);
 
   return (
@@ -86,7 +88,7 @@ const Upcoming = () => {
           type="button"
           name="+"
           className="load-more"
-          onClick={getUpComingMovies}
+          onClick={getUpComingMovies.current}
         />
       </Main>
     </Layout>
