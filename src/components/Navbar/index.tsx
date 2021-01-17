@@ -12,14 +12,16 @@ const Navbar: React.FC = () => {
 
   return (
     <nav>
-      <span className="menu-icon">
-        <FiMenu size={30} onClick={() => setshowMenu(!showMenu)} />
-      </span>
-      {showMenu ? <Menu /> : ""}
+      <div className="nav-container">
+        <span className="hamburger-menu-icon">
+          <FiMenu size={30} onClick={() => setshowMenu(!showMenu)} />
+        </span>
+        {showMenu ? <Menu /> : ""}
 
-      <span>
-        <Button name="Login" />
-      </span>
+        <span>
+          <Button name="Login" />
+        </span>
+      </div>      
     </nav>
   );
 };

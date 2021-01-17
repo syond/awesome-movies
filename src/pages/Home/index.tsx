@@ -11,7 +11,7 @@ import "./styles.css";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
-import Input from "../../components/Input";
+import SearchInput from "../../components/SearchInput";
 import List from "../../components/List";
 import Button from "../../components/Button";
 
@@ -86,9 +86,7 @@ const Home = () => {
   return (
     <Layout>
       <Header title="Welcome to Awesome Movies">
-        <Input
-          name="search"
-          placeholder="Search for any movie"
+        <SearchInput
           onChange={(e) => {
             if (e.target.value !== "") {
               handleSearch(e.target.value);
@@ -151,7 +149,6 @@ const Home = () => {
                     )}
               </List>
               <Button
-                type="button"
                 name="+"
                 className="load-more"
                 onClick={getNowPlayingMovies.current}

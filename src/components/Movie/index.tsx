@@ -47,7 +47,7 @@ const Movie: React.FC<IMovieComponentProps> = ({
           </div>
         ) : ("")}
 
-        <div className="movie-details">
+        <section className="movie-details position">
           <div className="movie-title">
             {title ? (<h1>{title}</h1>) : ("")}
             {tagline ? (<span>{tagline}</span>) : ("")}
@@ -64,83 +64,86 @@ const Movie: React.FC<IMovieComponentProps> = ({
             <div className="movie-synopsis">
               <span>{overview}</span>
             </div>
-          ) : ("")}
+          ) : ("")}        
+        </section>
 
+
+        <section className="movie-details">
           <div className="movie-more-details">
-            <h4>More details</h4>
+              <h4>More details</h4>
 
-            {voteAverage ? (
-              <>
-                <strong>Vote Average:</strong>
-                <span>{voteAverage}</span>
-              </>
+              {voteAverage ? (
+                <>
+                  <strong>Vote Average:</strong>
+                  <span>{voteAverage}</span>
+                </>
 
-            ) : ("")}
-            
-            {spokenLanguages ? (
-              <>
-                <strong>Spoken Languages:{" "}</strong>
-                <span>{spokenLanguages.map((language) => language.name + " | ")}</span>
-              </>
-            ) : ("")}
+              ) : ("")}
+              
+              {spokenLanguages ? (
+                <>
+                  <strong>Spoken Languages:{" "}</strong>
+                  <span>{spokenLanguages.map((language) => language.name + " | ")}</span>
+                </>
+              ) : ("")}
 
-            {popularity ? (
-              <>
-                <strong>Popularity:</strong>
-                <span>{popularity}</span>
-              </>
+              {popularity ? (
+                <>
+                  <strong>Popularity:</strong>
+                  <span>{popularity}</span>
+                </>
 
-            ) : ("")}
+              ) : ("")}
 
-            {status ? (
-              <>
-                <strong>Status:</strong>
-                <span>{status}</span>
-              </>
+              {status ? (
+                <>
+                  <strong>Status:</strong>
+                  <span>{status}</span>
+                </>
 
-            ) : ("")}
+              ) : ("")}
 
-            {originalTitle ? (
-              <>
-                <strong>Original Title:</strong>
-                <span>{originalTitle}</span>
-              </>
-            ) : ("")}
+              {originalTitle ? (
+                <>
+                  <strong>Original Title:</strong>
+                  <span>{originalTitle}</span>
+                </>
+              ) : ("")}
 
-            {productionCompanies ? (
-              <>
-                <strong>Production Companies:</strong>
-                <span>
-                  {productionCompanies.map(
-                    (company) =>
-                      company.name + " - " + company.origin_country + " | "
-                  )}
-                </span>
-              </>
-            ) : ("")}
+              {productionCompanies ? (
+                <>
+                  <strong>Production Companies:</strong>
+                  <span>
+                    {productionCompanies.map(
+                      (company) =>
+                        company.name + " - " + company.origin_country + " | "
+                    )}
+                  </span>
+                </>
+              ) : ("")}
 
-            {productionCountries ? (
-              <>
-                <strong>Production Countries:</strong>
-                <span>{productionCountries.map((countrie) => countrie.name + " | ")}</span>
-              </>
-            ) : ("")}
+              {productionCountries ? (
+                <>
+                  <strong>Production Countries:</strong>
+                  <span>{productionCountries.map((countrie) => countrie.name + " | ")}</span>
+                </>
+              ) : ("")}
 
-            {homepage ? (
-              <>
-                <strong>Homepage:</strong>
-                <span>
-                  <a target="_blank" rel="noreferrer" href={homepage}>
-                    {homepage}
-                  </a>
-                </span>
-              </>
-            ) : (
-                ""
-              )}
-
-          </div>
-        </div>
+              {homepage ? (
+                <>
+                  <strong>Homepage:</strong>
+                  <span>
+                    <a target="_blank" rel="noreferrer" href={homepage}>
+                      {homepage}
+                    </a>
+                  </span>
+                </>
+              ) : (
+                  ""
+                )}
+            </div>
+        </section>
+      
       </div>
     </div>
   );

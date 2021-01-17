@@ -12,13 +12,13 @@ const Input: React.FC<IInputComponentProps> = ({
   ...rest
 }) => {
   return (
-    <div id="search-container">
+    <>
       {label ? <label htmlFor={name}>{label}</label> : ""}
 
       <input type="text" id={name} placeholder={placeholder} {...rest} />
 
       {children}
-    </div>
+    </>
   );
 };
 

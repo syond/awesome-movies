@@ -48,7 +48,7 @@ const MovieDetails = () => {
       <Header title="More details" />
       <Main>
         <div id="top-main">
-          <Button type="button" name="Back" onClick={handleBackButton} />
+          <Button name="Back" onClick={handleBackButton} />
         </div>
         <Movie
           backdropPath={movie?.backdrop_path!}
