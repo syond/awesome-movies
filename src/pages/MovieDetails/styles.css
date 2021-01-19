@@ -1,0 +1,7 @@
+#top-main>.back-icon {
+    margin-bottom: 30px;
+}
+
+#top-main>.back-icon>svg {
+    fill: var(--quinary);
+}

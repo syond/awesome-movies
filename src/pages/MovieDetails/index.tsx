@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+
+import "./styles.css";
 
 import { IMovieDetails } from "../../interfaces";
 
@@ -8,7 +11,6 @@ import { apiGetRequest } from "../../services/movies.service";
 import Layout from "../../components/Layout";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
-import Button from "../../components/Button";
 import Movie from "../../components/Movie";
 
 interface IRouteParams {
@@ -48,7 +50,11 @@ const MovieDetails = () => {
       <Header title="More details" />
       <Main>
         <div id="top-main">
-          <Button name="Back" onClick={handleBackButton} />
+          <div className="back-icon">
+            <FaArrowLeft size={24} onClick={handleBackButton} />
+          </div>
+          
+          {/* <Button name="Back" onClick={handleBackButton} /> */}
         </div>
         <Movie
           backdropPath={movie?.backdrop_path!}

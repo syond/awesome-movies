@@ -1,7 +1,7 @@
 header {
-  padding: 60px 30px;
+    padding: 50px 30px;
 }
 
-header > h1 {
-  font-size: 2rem;
+header>h1 {
+    font-size: 2rem;
 }
