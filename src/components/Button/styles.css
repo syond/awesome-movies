@@ -1,22 +1,17 @@
 button {
-  height: 60px;
-  width: 150px;
-  border-radius: 5px;
-  border-style: none;
-  outline: 0;
-
-  color: #eeeeee;
-
-  background-color: #00adb5;
-
-  transition: 0.5s;
-
-  margin: 0 0 10px 0;
-
-  cursor: pointer;
+    height: 60px;
+    width: 150px;
+    border-radius: 5px;
+    border-style: none;
+    outline: 0;
+    color: #eeeeee;
+    background-color: var(--secondary);
+    transition: 0.5s;
+    margin: 0 0 10px 0;
+    cursor: pointer;
 }
 
 button:hover {
-  opacity: 1;
-  background-color: aquamarine;
+    opacity: 1;
+    background-color: var(--tertiary);
 }
