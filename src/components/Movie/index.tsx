@@ -26,13 +26,32 @@ const Movie: React.FC<IMovieComponentProps> = ({
     <div id="movie-container">
       {children}
 
-
       {backdropPath ? (
         <div className="backdrop-image">
           <img
             src={"https://image.tmdb.org/t/p/original" + backdropPath}
             alt="backdrop"
           />
+
+          <section className="movie-details">
+            <div className="movie-title">
+              {title ? (<h1>{title}</h1>) : ("")}
+              {tagline ? (<span>{tagline}</span>) : ("")}
+            </div>
+
+            <div className="movie-info">
+              {releaseDate ? (<span>{releaseDate}</span>) : ("")}
+              <span className="maturity-number">13 anos</span>
+              <span>2h 18min</span>
+              {genres ? (<span>{genres.map((genre) => genre.name + "; ")}</span>) : ("")}
+            </div>
+
+            {overview ? (
+              <div className="movie-synopsis">
+                <span>{overview}</span>
+              </div>
+            ) : ("")}
+          </section>
         </div>
       ) : ("")}
 
@@ -47,25 +66,7 @@ const Movie: React.FC<IMovieComponentProps> = ({
           </div>
         ) : ("")}
 
-        <div className="movie-details">
-          <div className="movie-title">
-            {title ? (<h1>{title}</h1>) : ("")}
-            {tagline ? (<span>{tagline}</span>) : ("")}
-          </div>
-
-          <div className="movie-info">
-            {releaseDate ? (<span>{releaseDate}</span>) : ("")}
-            <span className="maturity-number">13 anos</span>
-            <span>2h 18min</span>
-            {genres ? (<span>{genres.map((genre) => genre.name + "; ")}</span>) : ("")}
-          </div>
-
-          {overview ? (
-            <div className="movie-synopsis">
-              <span>{overview}</span>
-            </div>
-          ) : ("")}
-
+        <section className="movie-details">
           <div className="movie-more-details">
             <h4>More details</h4>
 
@@ -76,7 +77,7 @@ const Movie: React.FC<IMovieComponentProps> = ({
               </>
 
             ) : ("")}
-            
+
             {spokenLanguages ? (
               <>
                 <strong>Spoken Languages:{" "}</strong>
@@ -138,9 +139,9 @@ const Movie: React.FC<IMovieComponentProps> = ({
             ) : (
                 ""
               )}
-
           </div>
-        </div>
+        </section>
+
       </div>
     </div>
   );
