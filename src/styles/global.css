@@ -1,33 +1,46 @@
 /* variabels */
+
 :root {
-  --primary: #222831;
-  --secondary: #393e46;
-  --tertiary: #00adb5;
-  --quaternary: #eeeeee;
-  --quinary: #828282;
+    --primary: #222831;
+    --secondary: #393e46;
+    --tertiary: #00adb5;
+    --quaternary: #eeeeee;
+    --quinary: #828282;
 }
+
 
 /* body default */
-body {
-  box-sizing: border-box;
-  background-color: var(--secondary);
 
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+    box-sizing: border-box;
+    background-color: var(--secondary);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+
 /* reset */
+
 body,
 input,
 button,
 textarea {
-  margin: 0;
-  padding: 0;
-  font: 400 18px Roboto, sans-serif;
-  color: var(--quaternary);
+    margin: 0;
+    padding: 0;
+    font: 400 18px Roboto, sans-serif;
+    color: var(--quaternary);
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: inherit;
+    text-decoration: underline;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
