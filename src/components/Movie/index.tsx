@@ -26,6 +26,16 @@ const Movie: React.FC<IMovieComponentProps> = ({
     <div id="movie-container">
       {children}
 
+{/* 
+  Possível solução para o problema do position da section dentro 
+  da imagem.
+
+
+  1- Colocar a imagem como background da div
+  2- Colocar a section dentro da mesma div que a imagem
+  3- Usar position absolute na section e na div
+
+*/}
 
       {backdropPath ? (
         <div className="backdrop-image">
@@ -47,7 +57,7 @@ const Movie: React.FC<IMovieComponentProps> = ({
           </div>
         ) : ("")}
 
-        <section className="movie-details position">
+        <section className="movie-details position-absolute">
           <div className="movie-title">
             {title ? (<h1>{title}</h1>) : ("")}
             {tagline ? (<span>{tagline}</span>) : ("")}
