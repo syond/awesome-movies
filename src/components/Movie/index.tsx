@@ -26,23 +26,32 @@ const Movie: React.FC<IMovieComponentProps> = ({
     <div id="movie-container">
       {children}
 
-{/* 
-  Possível solução para o problema do position da section dentro 
-  da imagem.
-
-
-  1- Colocar a imagem como background da div
-  2- Colocar a section dentro da mesma div que a imagem
-  3- Usar position absolute na section e na div
-
-*/}
-
       {backdropPath ? (
         <div className="backdrop-image">
           <img
             src={"https://image.tmdb.org/t/p/original" + backdropPath}
             alt="backdrop"
           />
+
+          <section className="movie-details">
+            <div className="movie-title">
+              {title ? (<h1>{title}</h1>) : ("")}
+              {tagline ? (<span>{tagline}</span>) : ("")}
+            </div>
+
+            <div className="movie-info">
+              {releaseDate ? (<span>{releaseDate}</span>) : ("")}
+              <span className="maturity-number">13 anos</span>
+              <span>2h 18min</span>
+              {genres ? (<span>{genres.map((genre) => genre.name + "; ")}</span>) : ("")}
+            </div>
+
+            {overview ? (
+              <div className="movie-synopsis">
+                <span>{overview}</span>
+              </div>
+            ) : ("")}
+          </section>
         </div>
       ) : ("")}
 
@@ -58,102 +67,81 @@ const Movie: React.FC<IMovieComponentProps> = ({
         ) : ("")}
 
         <section className="movie-details">
-          <div className="movie-title">
-            {title ? (<h1>{title}</h1>) : ("")}
-            {tagline ? (<span>{tagline}</span>) : ("")}
-          </div>
-
-          <div className="movie-info">
-            {releaseDate ? (<span>{releaseDate}</span>) : ("")}
-            <span className="maturity-number">13 anos</span>
-            <span>2h 18min</span>
-            {genres ? (<span>{genres.map((genre) => genre.name + "; ")}</span>) : ("")}
-          </div>
-
-          {overview ? (
-            <div className="movie-synopsis">
-              <span>{overview}</span>
-            </div>
-          ) : ("")}        
-        </section>
-
-
-        <section className="movie-details">
           <div className="movie-more-details">
-              <h4>More details</h4>
+            <h4>More details</h4>
 
-              {voteAverage ? (
-                <>
-                  <strong>Vote Average:</strong>
-                  <span>{voteAverage}</span>
-                </>
+            {voteAverage ? (
+              <>
+                <strong>Vote Average:</strong>
+                <span>{voteAverage}</span>
+              </>
 
-              ) : ("")}
-              
-              {spokenLanguages ? (
-                <>
-                  <strong>Spoken Languages:{" "}</strong>
-                  <span>{spokenLanguages.map((language) => language.name + " | ")}</span>
-                </>
-              ) : ("")}
+            ) : ("")}
 
-              {popularity ? (
-                <>
-                  <strong>Popularity:</strong>
-                  <span>{popularity}</span>
-                </>
+            {spokenLanguages ? (
+              <>
+                <strong>Spoken Languages:{" "}</strong>
+                <span>{spokenLanguages.map((language) => language.name + " | ")}</span>
+              </>
+            ) : ("")}
 
-              ) : ("")}
+            {popularity ? (
+              <>
+                <strong>Popularity:</strong>
+                <span>{popularity}</span>
+              </>
 
-              {status ? (
-                <>
-                  <strong>Status:</strong>
-                  <span>{status}</span>
-                </>
+            ) : ("")}
 
-              ) : ("")}
+            {status ? (
+              <>
+                <strong>Status:</strong>
+                <span>{status}</span>
+              </>
 
-              {originalTitle ? (
-                <>
-                  <strong>Original Title:</strong>
-                  <span>{originalTitle}</span>
-                </>
-              ) : ("")}
+            ) : ("")}
 
-              {productionCompanies ? (
-                <>
-                  <strong>Production Companies:</strong>
-                  <span>
-                    {productionCompanies.map(
-                      (company) =>
-                        company.name + " - " + company.origin_country + " | "
-                    )}
-                  </span>
-                </>
-              ) : ("")}
+            {originalTitle ? (
+              <>
+                <strong>Original Title:</strong>
+                <span>{originalTitle}</span>
+              </>
+            ) : ("")}
 
-              {productionCountries ? (
-                <>
-                  <strong>Production Countries:</strong>
-                  <span>{productionCountries.map((countrie) => countrie.name + " | ")}</span>
-                </>
-              ) : ("")}
+            {productionCompanies ? (
+              <>
+                <strong>Production Companies:</strong>
+                <span>
+                  {productionCompanies.map(
+                    (company) =>
+                      company.name + " - " + company.origin_country + " | "
+                  )}
+                </span>
+              </>
+            ) : ("")}
 
-              {homepage ? (
-                <>
-                  <strong>Homepage:</strong>
-                  <span>
-                    <a target="_blank" rel="noreferrer" href={homepage}>
-                      {homepage}
-                    </a>
-                  </span>
-                </>
-              ) : (
-                  ""
-                )}
-            </div>
+            {productionCountries ? (
+              <>
+                <strong>Production Countries:</strong>
+                <span>{productionCountries.map((countrie) => countrie.name + " | ")}</span>
+              </>
+            ) : ("")}
+
+            {homepage ? (
+              <>
+                <strong>Homepage:</strong>
+                <span>
+                  <a target="_blank" rel="noreferrer" href={homepage}>
+                    {homepage}
+                  </a>
+                </span>
+              </>
+            ) : (
+                ""
+              )}
+          </div>
         </section>
-      
+
       </div>
     </div>
   );
