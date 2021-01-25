@@ -1,0 +1,16 @@
+#top-main>.back-icon {
+    margin-bottom: 30px;
+}
+
+#top-main>.back-icon>svg {
+    transition: 0.5s;
+}
+
+#top-main>.back-icon>svg:hover {
+    cursor: pointer;
+    fill: var(--tertiary);
+}
+
+#top-main>.back-icon>svg {
+    fill: var(--quinary);
+}

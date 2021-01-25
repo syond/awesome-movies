@@ -6,8 +6,10 @@ import "./styles.css";
 const Menu = () => {
   return (
     <div id="menu-container">
-      <Link to={"/"}>Now playing Movies</Link>
-      <Link to={"/upcoming"}>Upcoming Movies</Link>
+      <ul>
+        <li><Link to={"/"}>Now playing Movies</Link></li>
+        <li><Link to={"/upcoming"}>Upcoming Movies</Link></li>
+      </ul>
     </div>
   );
 };
