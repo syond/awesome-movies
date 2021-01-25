@@ -5,3 +5,7 @@ header {
 header>h1 {
     font-size: 2rem;
 }
+
+header>span {
+    font-size: 0.875rem;
+}

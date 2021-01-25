@@ -12,6 +12,8 @@ const Header: React.FC<Props> = ({ children, title }) => {
     <header>
       <h1>{title}</h1>
 
+      <span>Developed by <strong><a target="_blank" href="https://github.com/syond">Syond Santos</a></strong></span>
+
       {children}
     </header>
   );
