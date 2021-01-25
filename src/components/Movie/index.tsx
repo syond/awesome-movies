@@ -57,7 +57,7 @@ const Movie: React.FC<IMovieComponentProps> = ({
           </div>
         ) : ("")}
 
-        <section className="movie-details position-absolute">
+        <section className="movie-details">
           <div className="movie-title">
             {title ? (<h1>{title}</h1>) : ("")}
             {tagline ? (<span>{tagline}</span>) : ("")}
