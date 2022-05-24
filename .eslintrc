@@ -5,6 +5,15 @@
         "plugin:react/recommended"
     ],
     "rules": {
-        "no-console": "error"
-    }
+        "no-console": "error",
+        "no-mixed-spaces-and-tabs": "off"
+    },
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "rules": {
+                "no-undef": "off"
+            }
+        }
+    ]
 }
