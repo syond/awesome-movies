@@ -24,12 +24,12 @@
 	},
 	"scripts": {
 		"prestart": "npm install",
+		"postinstall": "husky install",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "eslint --no-error-on-unmatched-pattern",
-		"prepare": "husky install"
+		"lint": "eslint --no-error-on-unmatched-pattern"
 	},
 	"browserslist": {
 		"production": [
