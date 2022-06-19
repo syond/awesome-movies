@@ -1,14 +1,34 @@
 version: "3"
 
 services:
-    web-dev:
-        build: .
-        container_name: awesome-movies-web-dev
-        hostname: awesome-movies-web-dev
-        ports: 
+    app:
+        build: ./containers/node
+        #image: node:14.19.3
+        container_name: awesome-movies-app
+        hostname: awesome-movies-app
+        #user: node:node
+        #working_dir: /usr/app
+        #expose:
+        #    - 3000
+        ports:
             - 3000:3000
-        volumes: 
+        volumes:
             - .:/usr/app
-        command: npm start
-        environment: 
-            - CHOKIDAR_USEPOLLING=true #This is for HOT RELOAD
+        command: npm run build
+
+    webserver:
+        build: ./containers/nginx
+        container_name: awesome-movies-webserver
+        hostname: awesome-movies-webserver
+        depends_on:
+            - app
+        ports:
+            - 3005:80
+        volumes:
+            - ./build:/var/www/html/public
+        networks:
+            - awesome-movies-network
+
+networks:
+    awesome-movies-network:
+        driver: bridge
