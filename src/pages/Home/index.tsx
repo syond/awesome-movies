@@ -65,6 +65,8 @@ const Home = () => {
 
 			const nextDataToRequest = [...nowPlayingMovies, ...response.data.results];
 
+			setotherInfos(response.data);
+
 			setNowPlayingMovies(nextDataToRequest);
 
 			setnextPageNumber(response.data.page + 1);
