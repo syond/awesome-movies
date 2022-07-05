@@ -6,11 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-infra: Created Dockerfile for NGINX and Nodejs
-infra: Created docker-compose files for production and development enviroments
+- Dockerfile for NGINX and Nodejs #14
+- docker-compose files for production and development enviroments #14
 
 ### Changed
-chore: Updated Nodejs to v14.19.3
+- Updated Nodejs to v14.19.3 #24
 
 ## [1.1.0] - 2022-05-25
 ### Added
