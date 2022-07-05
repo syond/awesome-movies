@@ -24,6 +24,7 @@
 	},
 	"scripts": {
 		"prestart": "npm install",
+		"prebuild": "npm install",
 		"postinstall": "husky install",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
