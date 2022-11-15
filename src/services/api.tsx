@@ -1,11 +1,15 @@
-import axios from "axios";
-import dotenv from "dotenv";
+// import axios from 'axios';
+// import dotenv from 'dotenv';
+import { ApiAdapter } from './ApiAdapter';
 
-dotenv.config();
+// dotenv.config();
 
-const api = axios.create({
-  baseURL: `${process.env.REACT_APP_API_URL}`,
-  timeout: 1000,
-});
+// const api = new ApiAdapter();
+const api = new ApiAdapter();
 
-export default api;
+// const api = axios.create({
+// 	baseURL: `${process.env.REACT_APP_API_URL}`,
+// 	timeout: 1000,
+// });
+
+export default api.instance;
