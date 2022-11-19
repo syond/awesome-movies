@@ -7,7 +7,7 @@ import { IAdapter } from './types';
  * pelo Api Adapter.
  */
 class CustomAxiosAdpter implements IAdapter {
-	api: AxiosInstance;
+	private api: AxiosInstance;
 
 	constructor() {
 		dotenv.config();
@@ -21,11 +21,8 @@ class CustomAxiosAdpter implements IAdapter {
 		//this.invoke();
 	}
 
-	invoke() {
-		// this.api.create({
-		// 	baseURL: `${process.env.REACT_APP_API_URL}`,
-		// 	timeout: 1000,
-		// });
+	getInstance() {
+		return this.api;
 	}
 }
 

@@ -2,14 +2,14 @@
 // import dotenv from 'dotenv';
 import { ApiAdapter } from './ApiAdapter';
 
-// dotenv.config();
+// só testando, mas isso não vai ficar aqui!
+import { Service } from './Service';
 
-// const api = new ApiAdapter();
-const api = new ApiAdapter();
+const api = new ApiAdapter().getInstance();
 
-// const api = axios.create({
-// 	baseURL: `${process.env.REACT_APP_API_URL}`,
-// 	timeout: 1000,
-// });
+const teste = new Service();
 
-export default api.instance;
+teste.config('movie');
+teste.list();
+
+export default api;

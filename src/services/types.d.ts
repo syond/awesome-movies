@@ -3,8 +3,7 @@
 // }
 
 export interface IAdapter {
-	api: const;
-	invoke();
+	getInstance();
 }
 
 export interface IRequest {
@@ -15,8 +14,6 @@ export interface IRequest {
 }
 
 export interface IService {
-	resource: const;
-	limit: const;
 	save();
 	list();
 	show();
