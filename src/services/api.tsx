@@ -3,13 +3,12 @@
 import { ApiAdapter } from './ApiAdapter';
 
 // só testando, mas isso não vai ficar aqui!
-import { Service } from './Service';
+import { MovieService } from './MovieService';
 
 const api = new ApiAdapter().getInstance();
 
-const teste = new Service();
+const teste = new MovieService();
 
-teste.config('movie');
 teste.list();
 
 export default api;

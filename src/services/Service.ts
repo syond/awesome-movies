@@ -7,15 +7,10 @@ class Service implements IService {
 	private limit: number | undefined;
 	private apiAdapter;
 
-	constructor() {
-		this.resource = '';
-		this.limit = 10;
+	constructor(resource: string, limit?: number) {
+		this.resource = resource || '';
+		this.limit = limit || 10;
 		this.apiAdapter = new ApiAdapter().getInstance();
-	}
-
-	config(resource: string, limit?: number) {
-		this.resource = resource;
-		this.limit = limit;
 	}
 
 	save() {}
