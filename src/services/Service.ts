@@ -13,7 +13,7 @@ class Service implements IService {
 		this.baseQueryParams = this.serializeQueryParams({
 			// Needs refactor to make this work with Axios Headers. Read the API doc.
 			api_key: 'b38408e34db8e90af9dc695ebae84f37',
-			page: '1',
+			// page: '1',
 			...queryParams,
 		});
 
@@ -29,7 +29,7 @@ class Service implements IService {
 			url = `${this.baseUrlRequest}&${this.serializeQueryParams(queryParams)}`;
 		}
 
-		this.request.get(url);
+		return this.request.get(url);
 	}
 
 	show(queryParams?: queryParamsType) {
@@ -39,7 +39,7 @@ class Service implements IService {
 			url = `${this.baseUrlRequest}&${this.serializeQueryParams(queryParams)}`;
 		}
 
-		this.request.get(url);
+		return this.request.get(url);
 	}
 
 	/**

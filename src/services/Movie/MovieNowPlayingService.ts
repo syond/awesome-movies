@@ -1,6 +1,6 @@
-import { Service } from './Service';
+import { Service } from '../Service';
 
-class MovieService extends Service {
+class MovieNowPlayingService extends Service {
 	constructor() {
 		super('movie/now_playing', {
 			language: 'pt-BR',
@@ -12,4 +12,4 @@ class MovieService extends Service {
 	}
 }
 
-export { MovieService };
+export { MovieNowPlayingService };

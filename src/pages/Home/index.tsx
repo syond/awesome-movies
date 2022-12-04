@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { IMovie } from '../../interfaces';
 import { apiGetRequest } from '../../services/movies.service';
+import { MovieNowPlayingService } from '../../services/Movie/MovieNowPlayingService';
+import { MovieSearchService } from '../../services/Movie/MovieSearchService';
 
 import { Spinner } from 'react-bootstrap';
 import notFoundImg from '../../assets/images/error-404.jpg';
@@ -25,17 +27,20 @@ const Home = () => {
 	const [isLoadingSearchedMovie, setisLoadingSearchedMovie] =
 		useState<Boolean>();
 
+	const movieNowPlayingService = new MovieNowPlayingService();
+	const movieSearchService = new MovieSearchService();
+
 	async function handleSearch(value: string) {
 		setisLoadingSearchedMovie(true);
 
-		const dataToRequest = {
-			action: 'movie',
-			search: true,
+		const queryParams = {
+			// action: 'movie',
+			// search: true,
 			query: value,
 		};
 
 		try {
-			const movie = await apiGetRequest(dataToRequest);
+			const movie = await movieSearchService.show(queryParams);
 
 			const movieData = movie.data;
 			const movieResults = movie.data.results;
@@ -54,14 +59,12 @@ const Home = () => {
 	getNowPlayingMovies.current = async () => {
 		setLoadingNowPlayingMovies(true);
 
-		const dataToRequest = {
-			action: 'movie',
-			type: 'now_playing',
+		const queryParams = {
 			page: nextPageNumber,
 		};
 
 		try {
-			const response = await apiGetRequest(dataToRequest);
+			const response = await movieNowPlayingService.list(queryParams);
 
 			const nextDataToRequest = [...nowPlayingMovies, ...response.data.results];
 

@@ -20,4 +20,6 @@ export interface IService {
 	delete();
 }
 
-export type queryParamsType = Record<string, string> | undefined;
+export type queryParamsType =
+	| Record<string, string | number, number>
+	| undefined;
