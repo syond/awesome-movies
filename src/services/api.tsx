@@ -9,6 +9,6 @@ const api = new ApiAdapter().getInstance();
 
 const teste = new MovieService();
 
-// teste.list();
+teste.getByName();
 
 export default api;

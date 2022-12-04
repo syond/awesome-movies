@@ -7,17 +7,17 @@ export interface IAdapter {
 }
 
 export interface IRequest {
-	get();
-	post();
-	update();
-	delete();
+	get(url: string);
+	post(url: string);
+	update(url: string);
+	delete(url: string);
 }
 
 export interface IService {
-	save();
-	list();
-	show();
-	create();
-	edit();
+	save(data: Record<string, string> | undefined);
+	list(queryParams: queryParamsType);
+	show(queryParams: queryParamsType);
 	delete();
 }
+
+export type queryParamsType = Record<string, string> | undefined;
